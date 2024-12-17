@@ -20,7 +20,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: 20px auto;
-  width: 600px; /* 사진 4개 크기만큼의 가로 너비 설정 */
+  width: 600px; /* PC에서는 사진 4개 크기만큼의 가로 너비 설정 */
 }
 
 #search {
@@ -52,6 +52,17 @@ body {
   height: 20px;
 }
 
+/* 모바일 화면에서 검색창 길이 수정 */
+@media (max-width: 768px) {
+  .search-container {
+    width: 70%; /* 검색창이 화면 너비의 70% 차지 */
+  }
+
+  #search {
+    width: calc(100% - 40px); /* 돋보기 버튼 제외한 나머지 공간 */
+  }
+}
+
 /* 갤러리 스타일 */
 .gallery {
   display: grid;
@@ -70,7 +81,7 @@ body {
 
 /* 정보창 스타일 (PC 버전) */
 #details {
-  display: flex;
+  display: none; /* 기본적으로 숨김 */
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -111,20 +122,20 @@ body {
 /* 모바일 화면 (768px 이하) */
 @media (max-width: 768px) {
   #details {
-    flex-direction: column; /* 세로 배치 */
+    flex-direction: column;
     width: 90%;
     max-width: 400px;
     padding: 10px;
     gap: 10px;
     text-align: center;
     max-height: 80vh;
-    overflow-y: auto; /* 세로 스크롤 가능 */
+    overflow-y: auto;
   }
 
   #details img {
     width: 100%;
     height: auto;
-    margin-bottom: 10px; /* 이미지 아래 여백 */
+    margin-bottom: 10px;
   }
 
   .details-info {
