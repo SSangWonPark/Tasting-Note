@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tasting Note</title>
+    <!-- 연결된 스타일 -->
+    <link rel="stylesheet" href="./style.css" />
+    <!-- SheetJS 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <div class="search-container">
+        <button class="write-button">Write</button>
+        <input type="text" id="search" placeholder="Search..." />
+        <button id="searchButton">🔍</button>
+      </div>
+    </div>
+    <div class="gallery" id="gallery"></div>
+    <div class="pagination" id="pagination">
+      <button id="prevPage">⬅</button>
+      <button id="nextPage">➡</button>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <div class="details" id="details">
+      <!-- 닫기 버튼 추가 -->
+      <button class="close-button" id="closeDetails">✖</button>
+      <img id="detailsImage" src="" alt="" />
+      <div class="details-info">
+        <h3 id="detailsName">Name</h3>
+        <label for="detailsNose">Nose:</label>
+        <textarea id="detailsNose"></textarea>
+        <label for="detailsPalate">Palate:</label>
+        <textarea id="detailsPalate"></textarea>
+        <label for="detailsFinish">Finish:</label>
+        <textarea id="detailsFinish"></textarea>
+        <label for="detailsCf">Cf:</label>
+        <textarea id="detailsCf"></textarea>
+        <button id="saveDetails">Save</button>
+      </div>
+    </div>
+
+    <!-- 연결된 JavaScript -->
+    <script src="./script.js"></script>
+  </body>
+</html>
