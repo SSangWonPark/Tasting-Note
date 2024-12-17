@@ -86,10 +86,9 @@ body {
   align-items: center;
   justify-content: center;
   position: fixed;
-  top: 20%;
-  /*     top: 50%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); */
+  transform: translate(-50%, -50%);
   background-color: white;
   z-index: 1000;
   width: 60%;
@@ -99,7 +98,7 @@ body {
 }
 
 .details img {
-  width: 300px;
+  width: 50%; /* 이미지 크기 웹페이지 크기의 절반 */
   height: auto;
   border-radius: 5px;
   margin-right: 20px; /* 이미지와 정보 사이 간격 */
@@ -129,14 +128,14 @@ body {
     padding: 10px;
     gap: 10px;
     text-align: center;
-    max-height: 80vh;
+    max-height: 100vh; /* 이게 문제... 원본 이미지 위쪽이 짤림. 100이상부터는 취소버튼이 위로 감감*/
     overflow-y: auto; /* 스크롤 허용 */
   }
 
   #details img {
-    width: 100%;
+    width: 90%; /* 55%일 때 비율적으로 원본이 안잘리는데 너무 작아짐. */
     height: auto;
-    margin-bottom: 10px;
+    margin-bottom: 0px; /* -20px마다 5%씩 가로 추가 가능 */
   }
 
   .details-info {
