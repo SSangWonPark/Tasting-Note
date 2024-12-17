@@ -119,28 +119,43 @@ body {
   box-sizing: border-box;
 }
 
-/* 모바일 화면 (768px 이하) */
+/* 모바일 화면에서 검색창 길이 더 늘림 */
 @media (max-width: 768px) {
-  #details {
-    flex-direction: column;
-    width: 90%;
-    max-width: 400px;
-    padding: 10px;
-    gap: 10px;
-    text-align: center;
-    max-height: 80vh;
-    overflow-y: auto;
+  .search-container {
+    width: 90%; /* 검색창이 화면 너비의 90% 차지 */
   }
 
-  #details img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
+  #search {
+    width: calc(100% - 40px); /* 돋보기 버튼 제외한 나머지 공간 */
   }
+}
 
-  .details-info {
-    width: 100%;
-  }
+/* 정보창 스타일 수정: 이미지 위쪽 잘리는 현상 해결 */
+#details {
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  z-index: 1000;
+  width: 60%;
+  max-height: 80vh; /* 정보창 최대 높이 설정 */
+  overflow-y: auto; /* 내용이 넘칠 경우 스크롤 허용 */
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.details img {
+  width: 300px;
+  height: auto;
+  max-height: 100%; /* 이미지의 최대 높이를 부모 요소에 맞춤 */
+  border-radius: 5px;
+  margin-right: 20px;
 }
 
 /* 닫기 버튼 스타일 */
