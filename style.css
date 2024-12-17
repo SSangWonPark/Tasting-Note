@@ -1,3 +1,10 @@
+/* 초기 상태에서 빈 정보창 숨기기 */
+#overlay,
+#details {
+  display: none; /* 초기에는 보이지 않도록 설정 */
+}
+
+/* 전체 화면 스타일 */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -7,32 +14,45 @@ body {
   align-items: center;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px;
-  width: 100%;
-}
-
+/* 검색창과 돋보기 버튼 컨테이너 스타일 */
 .search-container {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
+  margin: 20px auto;
+  width: 600px; /* 사진 4개 크기만큼의 가로 너비 설정 */
 }
 
-.search-container input {
-  width: 300px;
-  height: 30px;
+#search {
+  height: 40px;
+  width: calc(100% - 40px);
+  border: 2px solid #ccc;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
   font-size: 16px;
-  padding: 5px;
+  padding-left: 10px;
+  box-sizing: border-box;
 }
 
-.search-container button {
-  height: 36px;
+#searchButton {
+  height: 40px;
+  width: 40px;
+  border: 2px solid #ccc;
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+  background-color: #f0f0f0;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+#searchButton img {
+  width: 20px;
+  height: 20px;
+}
+
+/* 갤러리 스타일 */
 .gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -48,135 +68,71 @@ body {
   cursor: pointer;
 }
 
-.details {
-  display: none;
-  flex-direction: row;
-  margin: 20px;
-  gap: 20px;
-  width: 80%;
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: white;
-  z-index: 1000;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px;
-  width: 100%;
-}
-
-.search-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.search-container input {
-  width: 300px;
-  height: 30px;
-  font-size: 16px;
-  padding: 5px;
-}
-
-.search-container button {
-  height: 36px;
-  cursor: pointer;
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin: 20px;
-  width: 80%;
-}
-
-.gallery img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.details {
-  display: none;
-  flex-direction: row;
-  margin: 20px;
-  gap: 20px;
-  width: 80%;
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: white;
-  z-index: 1000;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* PC 버전 (기존 스타일) */
+/* 정보창 스타일 (PC 버전) */
 #details {
   display: flex;
-  flex-direction: row; /* 가로 배치 */
+  flex-direction: row;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  z-index: 1000;
+  width: 60%;
   padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
-/* 모바일 화면 (화면 너비가 768px 이하일 때 적용) */
+.details img {
+  width: 300px;
+  height: auto;
+  border-radius: 5px;
+  margin-right: 20px; /* 이미지와 정보 사이 간격 */
+}
+
+.details-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 10px;
+}
+
+.details-info textarea {
+  width: 100%;
+  height: 50px;
+  resize: none;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* 모바일 화면 (768px 이하) */
 @media (max-width: 768px) {
-    #details {
-        flex-direction: column; /* 세로 배치 */
-        align-items: center;
-        text-align: center;
-        width: 90%; /* 정보창 가로 비율을 화면 크기에 맞게 설정 */
-        max-width: 400px; /* 최대 너비 제한 */
-        margin: 0 auto; /* 화면 중앙 정렬 */
-        background-color: #fff; /* 배경색 (선택사항) */
-        border-radius: 10px; /* 모서리를 둥글게 */
-        overflow-y: auto; /* 세로 스크롤 허용 */
-        max-height: 80vh; /* 정보창 높이 제한 */
-        padding: 10px; /* 패딩 추가 */
-    }
+  #details {
+    flex-direction: column; /* 세로 배치 */
+    width: 90%;
+    max-width: 400px;
+    padding: 10px;
+    gap: 10px;
+    text-align: center;
+    max-height: 80vh;
+    overflow-y: auto; /* 세로 스크롤 가능 */
+  }
 
-    #details img {
-        width: 100%; /* 이미지 가로 폭에 맞게 설정 */
-        height: auto; /* 비율 유지 */
-        margin-bottom: 10px; /* 이미지 아래 여백 */
-    }
+  #details img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px; /* 이미지 아래 여백 */
+  }
 
-    /* 각 정보 항목 스타일 */
-    #detailsName,
-    #detailsNose,
-    #detailsPalate,
-    #detailsFinish,
-    #detailsCf {
-        width: 100%; /* 너비를 전체로 */
-        margin-bottom: 10px; /* 각 항목 여백 */
-        word-wrap: break-word; /* 긴 내용 줄바꿈 */
-    }
-
-    #detailsCf {
-        margin-bottom: 0; /* 마지막 항목 여백 제거 */
-    }
+  .details-info {
+    width: 100%;
+  }
 }
 
+/* 닫기 버튼 스타일 */
 .close-button {
   position: absolute;
   top: 10px;
@@ -187,56 +143,4 @@ body {
   cursor: pointer;
   color: #333;
   font-weight: bold;
-}
-
-.details img {
-  width: 300px;
-  height: auto;
-  border-radius: 5px;
-}
-
-.details-info {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.details-info textarea {
-  width: 100%;
-  height: 50px;
-  margin-bottom: 10px;
-  resize: none;
-  font-size: 16px;
-}
-
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  color: #333;
-  font-weight: bold;
-}
-
-.details img {
-  width: 300px;
-  height: auto;
-  border-radius: 5px;
-}
-
-.details-info {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.details-info textarea {
-  width: 100%;
-  height: 50px;
-  margin-bottom: 10px;
-  resize: none;
-  font-size: 16px;
 }
