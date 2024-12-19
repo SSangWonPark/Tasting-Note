@@ -14,6 +14,9 @@ const prevPageButton = document.getElementById('prevPage');
 const nextPageButton = document.getElementById('nextPage');
 const excelInput = document.getElementById('excelInput');
 
+const fullscreenImage = document.getElementById('fullscreenImage'); // 중복 제거
+const fullscreenImgElement = fullscreenImage.querySelector('img');
+
 const drinks = []; // 전체 데이터를 저장할 배열
 let filteredDrinks = []; // 검색 결과 데이터를 저장할 배열
 
@@ -26,7 +29,7 @@ function loadExcelFromProject() {
       const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
       const jsonData = XLSX.utils.sheet_to_json(firstSheet);
 
-      // drinks 배열에 데이터 추가
+      // drinks 배열에 데이터 추가 테스트용 더미미
       drinks.length = 0;
       jsonData.forEach((item) => {
         drinks.push({
@@ -128,6 +131,18 @@ nextPageButton.addEventListener('click', () => {
     currentPage++;
     renderGallery();
   }
+});
+
+// 전체화면 보기
+detailsImage.addEventListener('click', () => {
+  fullscreenImgElement.src = detailsImage.src; // 상세 정보 창 이미지의 src를 가져오기
+  fullscreenImage.style.display = 'flex'; // 전체화면 컨테이너 표시
+});
+
+// 전체화면 닫기
+fullscreenImage.addEventListener('click', () => {
+  fullscreenImage.style.display = 'none'; // 전체화면 숨기기
+  fullscreenImgElement.src = ''; // src 초기화 (메모리 최적화)
 });
 
 // 초기 실행

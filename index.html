@@ -12,7 +12,6 @@
   <body>
     <div class="header">
       <div class="search-container">
-        <button class="write-button">Write</button>
         <input type="text" id="search" placeholder="Search..." />
         <button id="searchButton">🔍</button>
       </div>
@@ -37,8 +36,12 @@
         <textarea id="detailsFinish"></textarea>
         <label for="detailsCf">Cf:</label>
         <textarea id="detailsCf"></textarea>
-        <button id="saveDetails">Save</button>
       </div>
+    </div>
+
+    <!-- 원본 사진을 위한 전체화면 컨테이너 -->
+    <div id="fullscreenImage">
+      <img src="" alt="Full Image" />
     </div>
 
     <!-- 연결된 JavaScript -->
