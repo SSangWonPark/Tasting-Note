@@ -13,6 +13,8 @@ const searchButton = document.getElementById('searchButton');
 const prevPageButton = document.getElementById('prevPage');
 const nextPageButton = document.getElementById('nextPage');
 const excelInput = document.getElementById('excelInput');
+const searchScopeDropdown = document.getElementById('searchScope');
+let searchScope = '모두'; // 초기값은 "모두"
 
 const fullscreenImage = document.getElementById('fullscreenImage'); // 중복 제거
 const fullscreenImgElement = fullscreenImage.querySelector('img');
@@ -48,12 +50,50 @@ function loadExcelFromProject() {
     .catch((error) => console.error('Error loading Excel file:', error));
 }
 
+// 검색 범위 변경 이벤트
+searchScopeDropdown.addEventListener('change', (e) => {
+  searchScope = e.target.value;
+});
+
+// 공백 제거 함수
+function removeSpaces(str) {
+  return str.replace(/\s+/g, '').toLowerCase(); // 공백 제거 + 소문자 변환
+}
+
 // 검색 기능
 function searchDrinks() {
-  const query = searchInput.value.trim().toLowerCase();
-  filteredDrinks = drinks.filter((drink) =>
-    drink.name.toLowerCase().includes(query)
-  );
+  const query = removeSpaces(searchInput.value.trim()); // 검색어에서 공백 제거
+  filteredDrinks = drinks.filter((drink) => {
+    // 각 속성의 공백을 제거한 문자열에서 검색
+    const name = removeSpaces(drink.name);
+    const nose = removeSpaces(drink.nose);
+    const palate = removeSpaces(drink.palate);
+    const finish = removeSpaces(drink.finish);
+    const cf = removeSpaces(drink.cf);
+
+    // 검색 범위에 따라 조건 분기
+    if (searchScope === '모두') {
+      return (
+        name.includes(query) ||
+        nose.includes(query) ||
+        palate.includes(query) ||
+        finish.includes(query) ||
+        cf.includes(query)
+      );
+    } else if (searchScope === '이름') {
+      return name.includes(query);
+    } else if (searchScope === 'Nose') {
+      return nose.includes(query);
+    } else if (searchScope === 'Palate') {
+      return palate.includes(query);
+    } else if (searchScope === 'Finish') {
+      return finish.includes(query);
+    } else if (searchScope === 'Cf') {
+      return cf.includes(query);
+    }
+    return false; // 기본값
+  });
+
   currentPage = 0; // 검색 후 페이지 초기화
   renderGallery();
 }
