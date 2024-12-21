@@ -18,24 +18,40 @@ body {
 .search-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; /* 모든 요소의 세로 높이를 일치 */
   margin: 20px auto;
-  width: 600px; /* PC에서는 사진 4개 크기만큼의 가로 너비 설정 */
+  width: 600px;
+  height: 40px; /* 컨테이너 높이를 고정하여 내부 요소 정렬 */
+  box-sizing: border-box;
 }
 
-#search {
-  height: 40px;
-  width: calc(100% - 40px);
+/* 드롭다운 메뉴 스타일 */
+#searchScope {
+  height: 100%; /* 컨테이너 높이에 맞춤 */
+  display: inline-block;
+  vertical-align: middle;
+  padding: 5px; /* 드롭다운 내부 여백 */
+  font-size: 16px;
   border: 2px solid #ccc;
-  border-right: none;
   border-radius: 5px 0 0 5px;
+  box-sizing: border-box;
+}
+
+/* 검색창 스타일 */
+#search {
+  height: 100%; /* 컨테이너 높이에 맞춤 */
+  width: calc(100% - 150px); /* 드롭다운과 버튼 크기를 제외한 나머지 너비 */
+  border: 2px solid #ccc;
+  border-left: none;
+  border-right: none;
   font-size: 16px;
   padding-left: 10px;
   box-sizing: border-box;
 }
 
+/* 돋보기 버튼 스타일 */
 #searchButton {
-  height: 40px;
+  height: 100%; /* 컨테이너 높이에 맞춤 */
   width: 40px;
   border: 2px solid #ccc;
   border-left: none;
@@ -143,7 +159,7 @@ body {
     max-height: 100%; /* 이미지 높이 제한 */
     height: auto; /* 비율 유지 */
     object-fit: contain; /* 이미지 비율 유지하며 부모 높이에 맞게 축소 */
-    margin-bottom: 10px; /* 이미지와 아래 텍스트 간격 */
+    margin-bottom: 0px; /* 이미지와 아래 텍스트 간격 */
   }
 
   .details-info {
