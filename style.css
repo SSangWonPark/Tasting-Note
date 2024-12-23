@@ -140,7 +140,7 @@ body {
   #details {
     flex-direction: column; /* 세로 배치 */
     width: 90%;
-    max-width: 400px;
+    max-width: 80%;
     padding: 10px;
     gap: 10px;
     text-align: center;
@@ -158,6 +158,8 @@ body {
     width: 100%; /* 부모 요소의 가로폭에 맞춤 */
     max-height: 100%; /* 이미지 높이 제한 */
     height: auto; /* 비율 유지 */
+    position: relative;
+    left: 3%; /* 오른쪽 스크롤때문에 왼쪽에 살짝 여백 */
     object-fit: contain; /* 이미지 비율 유지하며 부모 높이에 맞게 축소 */
     margin-bottom: 0px; /* 이미지와 아래 텍스트 간격 */
   }
