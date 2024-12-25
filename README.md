@@ -1,2 +1,2 @@
-<h1>취미 기록 겸 Js 연습용</h1>
-<button type="button" onclick="window.open('[mypage.php](https://ssangwonpark.github.io/Tasting-Note)')">Tasting Note</button>
+# Js 공부 겸 취미생활 기록용
+## [Tasting Note](https://ssangwonpark.github.io/Tasting-Note)
